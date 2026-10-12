@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #128c4c;
+  --whatsapp: #25D366;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 antialiased;
+}
+
+/* Cards do dashboard: hover suave */
+.dash-card {
+  @apply block rounded-2xl border border-gray-200 bg-white transition-all duration-200;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.dash-card:hover {
+  @apply border-primary-300;
+  box-shadow: 0 8px 24px rgba(18, 140, 76, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Botões primários com transição */
+.btn-primary {
+  @apply px-4 py-2 rounded-xl font-medium transition-all duration-200;
+}
+.btn-primary:hover {
+  transform: translateY(-0.5px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Esconde scrollbar mantendo scroll (ex.: abas de categorias) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up {
+  animation: slide-up 0.25s ease-out;
+}
+
+/* Cardápio público: safe area para celulares com notch */
+.cardapio-page {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.cardapio-fab {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0));
+}
+.cardapio-drawer {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+@media (min-width: 640px) {
+  .cardapio-drawer {
+    border-radius: 1rem;
+    max-width: 28rem;
+    left: 50%;
+    margin-left: -14rem; /* metade de 28rem */
+  }
+}
